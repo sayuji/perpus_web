@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PerpustakaanController;
+use App\Http\Controllers\DataSiswaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,4 +24,10 @@ Route::get('/perpustakaan', function () {
     return view('perpustakaan');
 })->name('perpustakaan');
 
+Route::get('/data_siswa', function () {
+    return view('data_siswa');
+})->name('data_siswa');
+
 Route::get('/perpustakaan', [PerpustakaanController::class, 'index'])->name('perpustakaan');
+Route::get('/data_siswa', [DataSiswaController::class, 'data'])->name('data_siswa');
+

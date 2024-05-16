@@ -37,7 +37,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('data_siswa') }}">
                     <span>Data Siswa</span>
                 </a>
             </li>

@@ -67,27 +67,33 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Data Buku</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Data Peminjaman</h1>
 
                     <!-- Tabel Data Buku -->
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Judul</th>
-                                    <th>Penerbit</th>
-                                    <th>Penulis</th>
-                                    <th>Stok Buku</th>
-                                    <th>Action</th>
+                                    <th>ID</th>
+                                    <th>ID SISWA</th>
+                                    <th>NAMA SISWA</th>
+                                    <th>ID BUKU</th>
+                                    <th>NAMA BUKU</th>
+                                    <th>QTC</th>
+                                    <th>UPDATE AT</th>
+                                    <th>ACTION</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- Isi tabel di sini -->
                                 <tr>
-                                    <td>Bumi Manusia</td>
-                                    <td>Hasta Mitra</td>
-                                    <td>Pramoedya Anantatur</td>
-                                    <td>10</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>tio</td>
+                                    <td>2</td>
+                                    <td>ddp</td>
+                                    <td>1</td>
+                                    <td>2024-04-29</td>
                                     <td>
                                         <!-- Tambahkan tombol aksi di sini -->
                                         <button class="btn btn-primary">Edit</button>
@@ -95,10 +101,13 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Gadis Pantai</td>
-                                    <td>Lentera Di Pantara</td>
-                                    <td>Leila S. Chudor</td>
-                                    <td>10</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>usep</td>
+                                    <td>1</td>
+                                    <td>mantri</td>
+                                    <td>1</td>
+                                    <td>2024-04-25</td>
                                     <td>
                                         <!-- Tambahkan tombol aksi di sini -->
                                         <button class="btn btn-primary">Edit</button>
