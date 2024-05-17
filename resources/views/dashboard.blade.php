@@ -29,6 +29,11 @@
             <hr class="sidebar-divider">
             <!-- Nav Items -->
             <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('data_kategori') }}">
+                    <span>Data Kategori</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('data_buku') }}">
                     <span>Data Buku</span>
                 </a>
@@ -36,11 +41,6 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('data_anggota') }}">
                     <span>Data Anggota</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('data_kategori') }}">
-                    <span>Data Kategori</span>
                 </a>
             </li>
             <li class="nav-item">

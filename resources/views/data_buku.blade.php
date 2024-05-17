@@ -37,6 +37,11 @@
             <hr class="sidebar-divider">
             <!-- Nav Items -->
             <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('data_kategori') }}">
+                    <span>Data Kategori</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('data_buku') }}">
                     <span>Data Buku</span>
                 </a>
@@ -44,11 +49,6 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('data_anggota') }}">
                     <span>Data Anggota</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('data_kategori') }}">
-                    <span>Data Kategori</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -78,6 +78,10 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Data Buku</h1>
+
+                    <div class="text-left mb-4">
+                        <button class="btn btn-primary">Buat Data Buku</button>
+                    </div>
 
                     <!-- Tabel Data Buku -->
                     <div class="table-responsive">
