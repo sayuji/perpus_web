@@ -77,44 +77,45 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Data Anggota</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Peminjaman</h1>
 
                     <!-- Tabel Data Buku -->
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Nama</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Kelas</th>
-                                    <th>Email</th>
-                                    <th>Pilihan</th>
+                                  <th>No</th>
+                                  <th>Buku</th>
+                                  <th>Nama</th>
+                                  <th>Tanggal Peminjaman</th>
+                                  <th>Tanggal Pengembalian</th>
+                                  <th>Tanggal Kembali</th>
+                                  <th>Pilihan</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- Isi tabel di sini -->
                                 <tr>
                                     <td>1</td>
+                                    <td>Hahaha</td>
                                     <td>Najla Alfya Utami</td>
-                                    <td>Perempuan</td>
-                                    <td>10 Animasi 3</td>
-                                    <td>najlaalfyautami@gmail.com</td>
+                                    <td>10-05-2024</td>
+                                    <td>17-05-2024</td>
+                                    <td>29-05-2024</td>
                                     <td>
                                         <!-- Tambahkan tombol aksi di sini -->
-                                        <button class="btn btn-primary">Edit</button>
                                         <button class="btn btn-danger">Delete</button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
+                                    <td>Hahaha</td>
                                     <td>Cynthia Pradipta</td>
-                                    <td>Perempuan</td>
-                                    <td>10 Animasi 3</td>
-                                    <td>cynthiapradipta@gmail.com</td>
+                                    <td>10-05-2024</td>
+                                    <td>17-05-2024</td>
+                                    <td>29-05-2024</td>
                                     <td>
                                         <!-- Tambahkan tombol aksi di sini -->
-                                        <button class="btn btn-primary">Edit</button>
                                         <button class="btn btn-danger">Delete</button>
                                     </td>
                                 </tr>

@@ -57,7 +57,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('pengembalian') }}">
                     <span>Pengembalian</span>
                 </a>
             </li>
@@ -77,7 +77,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Data Buku</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Data Kategori</h1>
 
                     <!-- Tabel Data Buku -->
                     <div class="table-responsive">

@@ -5,6 +5,8 @@ use App\Http\Controllers\DataBukuController;
 use App\Http\Controllers\DataAnggotaController;
 use App\Http\Controllers\DataKategoriController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PengembalianController;
+
 
 
 
@@ -40,10 +42,13 @@ Route::get('/peminjaman', function () {
     return view('peminjaman');
 })->name('peminjaman');
 
+Route::get('/pengembalian', function () {
+    return view('pengembalian');
+})->name('pengembalian');
+
 Route::get('/data_buku', [DataBukuController::class, 'index'])->name('data_buku');
 Route::get('/data_anggota', [DataAnggotaController::class, 'data'])->name('data_anggota');
 Route::get('/data_kategori', [DataKategoriController::class, 'kategori'])->name('data_kategori');
 Route::get('/peminjaman', [PeminjamanController::class, 'peminjaman'])->name('peminjaman');
-
-
+Route::get('/pengembalian', [PengembalianController::class, 'pengembalian'])->name('pengembalian');
 
