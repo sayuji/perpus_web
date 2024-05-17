@@ -28,7 +28,7 @@
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -37,8 +37,18 @@
             <hr class="sidebar-divider">
             <!-- Nav Items -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('perpustakaan') }}">
-                    <span>Perpustakaan</span>
+                <a class="nav-link collapsed" href="{{ route('data_buku') }}">
+                    <span>Data Buku</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('data_anggota') }}">
+                    <span>Data Anggota</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('data_kategori') }}">
+                    <span>Data Kategori</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -47,8 +57,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('data_siswa') }}">
-                    <span>Data Siswa</span>
+                <a class="nav-link collapsed" href="#">
+                    <span>Pengembalian</span>
                 </a>
             </li>
             <!-- Divider -->
@@ -67,27 +77,29 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Data Buku</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Data Anggota</h1>
 
                     <!-- Tabel Data Buku -->
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Judul</th>
-                                    <th>Penerbit</th>
-                                    <th>Penulis</th>
-                                    <th>Stok Buku</th>
-                                    <th>Action</th>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Jenis Kelamin<th>
+                                    <th>Kelas</th>
+                                    <th>Email</th>
+                                    <th>Pilihan</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- Isi tabel di sini -->
                                 <tr>
-                                    <td>Bumi Manusia</td>
-                                    <td>Hasta Mitra</td>
-                                    <td>Pramoedya Anantatur</td>
-                                    <td>10</td>
+                                    <td>1</td>
+                                    <td>Najla Alfya Utami</td>
+                                    <td>Perempuan</td>
+                                    <td>10 Animasi 3</td>
+                                    <td>najlaaflyautami@gmail.com</td>
                                     <td>
                                         <!-- Tambahkan tombol aksi di sini -->
                                         <button class="btn btn-primary">Edit</button>
@@ -95,10 +107,11 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Gadis Pantai</td>
-                                    <td>Lentera Di Pantara</td>
-                                    <td>Leila S. Chudor</td>
-                                    <td>10</td>
+                                    <td>1</td>
+                                    <td>Najla Alfya Utami</td>
+                                    <td>Perempuan</td>
+                                    <td>10 Animasi 3</td>
+                                    <td>najlaaflyautami@gmail.com</td>
                                     <td>
                                         <!-- Tambahkan tombol aksi di sini -->
                                         <button class="btn btn-primary">Edit</button>

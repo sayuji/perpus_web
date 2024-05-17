@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PerpustakaanController;
-use App\Http\Controllers\DataSiswaController;
+use App\Http\Controllers\DataBukuController;
+use App\Http\Controllers\DataAnggotaController;
+use App\Http\Controllers\DataKategoriController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +22,20 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::get('/perpustakaan', function () {
-    return view('perpustakaan');
-})->name('perpustakaan');
+Route::get('/data_buku', function () {
+    return view('data_buku');
+})->name('data_buku');
 
-Route::get('/data_siswa', function () {
-    return view('data_siswa');
-})->name('data_siswa');
+Route::get('/data_anggota', function () {
+    return view('data_anggota');
+})->name('data_anggota');
 
-Route::get('/perpustakaan', [PerpustakaanController::class, 'index'])->name('perpustakaan');
-Route::get('/data_siswa', [DataSiswaController::class, 'data'])->name('data_siswa');
+Route::get('/data_kategori', function () {
+    return view('data_kategori');
+})->name('data_kategori');
+
+Route::get('/data_buku', [DataBukuController::class, 'index'])->name('data_buku');
+Route::get('/data_anggota', [DataAnggotaController::class, 'data'])->name('data_anggota');
+Route::get('/data_kategori', [DataKategoriController::class, 'kategori'])->name('data_kategori');
+
 

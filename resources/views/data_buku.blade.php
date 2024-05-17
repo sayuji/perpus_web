@@ -28,7 +28,7 @@
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -37,8 +37,18 @@
             <hr class="sidebar-divider">
             <!-- Nav Items -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('perpustakaan') }}">
-                    <span>Perpustakaan</span>
+                <a class="nav-link collapsed" href="{{ route('data_buku') }}">
+                    <span>Data Buku</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('data_anggota') }}">
+                    <span>Data Anggota</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('data_kategori') }}">
+                    <span>Data Kategori</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -47,8 +57,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('data_siswa') }}">
-                    <span>Data Siswa</span>
+                <a class="nav-link collapsed" href="#">
+                    <span>Pengembalian</span>
                 </a>
             </li>
             <!-- Divider -->
@@ -67,33 +77,29 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Data Peminjaman</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Data Buku</h1>
 
                     <!-- Tabel Data Buku -->
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>ID SISWA</th>
-                                    <th>NAMA SISWA</th>
-                                    <th>ID BUKU</th>
-                                    <th>NAMA BUKU</th>
-                                    <th>QTC</th>
-                                    <th>UPDATE AT</th>
-                                    <th>ACTION</th>
+                                    <th>No</th>
+                                    <th>Judul</th>
+                                    <th>Kategori</th>
+                                    <th>Deskripsi</th>
+                                    <th>Jumlah</th>
+                                    <th>Pilihan</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- Isi tabel di sini -->
                                 <tr>
                                     <td>1</td>
-                                    <td>1</td>
-                                    <td>tio</td>
-                                    <td>2</td>
-                                    <td>ddp</td>
-                                    <td>1</td>
-                                    <td>2024-04-29</td>
+                                    <td>Hahaha</td>
+                                    <td>Komedi</td>
+                                    <td>Kisah yang sangat lucu</td>
+                                    <td>10</td>
                                     <td>
                                         <!-- Tambahkan tombol aksi di sini -->
                                         <button class="btn btn-primary">Edit</button>
@@ -101,13 +107,11 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>2</td>
-                                    <td>2</td>
-                                    <td>usep</td>
                                     <td>1</td>
-                                    <td>mantri</td>
-                                    <td>1</td>
-                                    <td>2024-04-25</td>
+                                    <td>Hahaha</td>
+                                    <td>Komedi</td>
+                                    <td>Kisah yang sangat lucu</td>
+                                    <td>10</td>
                                     <td>
                                         <!-- Tambahkan tombol aksi di sini -->
                                         <button class="btn btn-primary">Edit</button>
