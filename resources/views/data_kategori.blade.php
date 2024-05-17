@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('peminjaman') }}">
                     <span>Peminjaman</span>
                 </a>
             </li>
@@ -101,7 +101,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>1</td>
+                                    <td>2</td>
                                     <td>Horror</td>
                                     <td>
                                         <!-- Tambahkan tombol aksi di sini -->

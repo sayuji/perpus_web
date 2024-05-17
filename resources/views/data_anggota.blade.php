@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('peminjaman') }}">
                     <span>Peminjaman</span>
                 </a>
             </li>
@@ -86,7 +86,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama</th>
-                                    <th>Jenis Kelamin<th>
+                                    <th>Jenis Kelamin</th>
                                     <th>Kelas</th>
                                     <th>Email</th>
                                     <th>Pilihan</th>
@@ -99,7 +99,7 @@
                                     <td>Najla Alfya Utami</td>
                                     <td>Perempuan</td>
                                     <td>10 Animasi 3</td>
-                                    <td>najlaaflyautami@gmail.com</td>
+                                    <td>najlaalfyautami@gmail.com</td>
                                     <td>
                                         <!-- Tambahkan tombol aksi di sini -->
                                         <button class="btn btn-primary">Edit</button>
@@ -107,11 +107,11 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Najla Alfya Utami</td>
+                                    <td>2</td>
+                                    <td>Cynthia Pradipta</td>
                                     <td>Perempuan</td>
                                     <td>10 Animasi 3</td>
-                                    <td>najlaaflyautami@gmail.com</td>
+                                    <td>cynthiapradipta@gmail.com</td>
                                     <td>
                                         <!-- Tambahkan tombol aksi di sini -->
                                         <button class="btn btn-primary">Edit</button>

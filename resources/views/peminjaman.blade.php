@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('peminjaman') }}">
                     <span>Peminjaman</span>
                 </a>
             </li>
@@ -77,20 +77,20 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Data Anggota</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Peminjaman</h1>
 
                     <!-- Tabel Data Buku -->
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Buku</th>
-                                    <th>Nama<th>
-                                    <th>Tanggal Peminjaman</th>
-                                    <th>Tanggal Pengembalian</th>
-                                    <th>Status</th>
-                                    <th>Pilihan</th>
+                                  <th>No</th>
+                                  <th>Buku</th>
+                                  <th>Nama</th>
+                                  <th>Tanggal Peminjaman</th>
+                                  <th>Tanggal Pengembalian</th>
+                                  <th>Pinjam</th>
+                                  <th>Pilihan</th>
                                 </tr>
                             </thead>
                             <tbody>
