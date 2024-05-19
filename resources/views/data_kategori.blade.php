@@ -79,9 +79,36 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Data Kategori</h1>
 
-                    <!-- Tombol Buat Kategori -->
-                    <div class="text-left mb-4">
-                        <button class="btn btn-primary">Buat Kategori</button>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal">
+                        Buat Kategori
+                    </button>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Buat Data Kategori</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Kategori</label>
+                                        <input type="text" class="form-control" placeholder="Nama Kategori">
+                                      </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </div>
+                        </div>
                     </div>
 
                     <!-- Tabel Data Buku -->
@@ -145,14 +172,14 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{ asset('assets/js/sb-admin-2.js')}}"></script>
+    <script src="{{ asset('assets/js/sb-admin-2.min.js')}}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.js')}}"></script>
+
+
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
 </body>
-
 </html>
