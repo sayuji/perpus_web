@@ -18,7 +18,7 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -96,16 +96,17 @@
                             </button>
                             </div>
                             <div class="modal-body">
-                                <form action="">
+                                <form action="{{ route('tambah_kategori') }}" method="POST" id="form-kategori">
+                                    @csrf
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Kategori</label>
-                                        <input type="text" class="form-control" placeholder="Nama Kategori">
+                                        <input type="text" class="form-control" placeholder="Nama Kategori" name="nama_kategori">
                                       </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            <button type="button" class="btn btn-primary">Simpan</button>
+                            <button type="button" class="btn btn-primary" onclick="$('#form-kategori').submit()">Simpan</button>
                             </div>
                         </div>
                         </div>
@@ -123,24 +124,17 @@
                             </thead>
                             <tbody>
                                 <!-- Isi tabel di sini -->
+                                @foreach ($data as $i => $kategori)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Komedi</td>
+                                    <td>{{ ++$i }}</td>
+                                    <td>{{ $kategori->nama_kategori }}</td>
                                     <td>
                                         <!-- Tambahkan tombol aksi di sini -->
                                         <button class="btn btn-primary">Edit</button>
                                         <button class="btn btn-danger">Delete</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Horror</td>
-                                    <td>
-                                        <!-- Tambahkan tombol aksi di sini -->
-                                        <button class="btn btn-primary">Edit</button>
-                                        <button class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -175,7 +169,7 @@
     <script src="{{ asset('assets/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{ asset('assets/js/sb-admin-2.js')}}"></script>
     <script src="{{ asset('assets/js/sb-admin-2.min.js')}}"></script>
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.js')}}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.js')}}"></script>
 
 
     <!-- Core plugin JavaScript-->

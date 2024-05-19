@@ -18,7 +18,7 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -96,31 +96,32 @@
                             </button>
                             </div>
                             <div class="modal-body">
-                                <form action="">
+                                <form action="{{ route('tambah_anggota') }}" method="POST" id="form-anggota">
+                                    @csrf
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Nama</label>
-                                        <input type="text" class="form-control" placeholder="Nama">
+                                        <input type="text" class="form-control" placeholder="Nama" name="nama">
                                       </div>
                                       <div class="form-group">
                                         <label for="exampleInputEmail1">Jenis Kelamin</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
+                                            <select class="form-control" id="exampleFormControlSelect1" name="jenis_kelamin">
                                                 <option selected disabled>--- Pilih Jenis Kelamin ---</option>
-                                                <option>Laki-Laki</option>
-                                                <option>Perempuan</option>
+                                                <option value="laki-laki">Laki-Laki</option>
+                                                <option value="perempuan">Perempuan</option>
                                             </select>
                                       </div>
                                       <div class="form-group">
                                         <label for="exampleInputEmail1">Kelas</label>
-                                        <input type="text" class="form-control" placeholder="Kelas">
+                                        <input type="text" class="form-control" placeholder="Kelas" name="kelas">
                                       </div>
                                       <div class="form-group">
                                         <label for="exampleInputEmail1">Email</label>
-                                        <input type="text" class="form-control" placeholder="Email">
+                                        <input type="email" class="form-control" placeholder="Email" name="email">
                                       </div>
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            <button type="button" class="btn btn-primary">Simpan</button>
+                            <button type="button" class="btn btn-primary" onclick="$('#form-anggota').submit()">Simpan</button>
                             </div>
                         </div>
                         </div>
@@ -141,30 +142,20 @@
                             </thead>
                             <tbody>
                                 <!-- Isi tabel di sini -->
+                                @foreach ($data as $i => $anggota)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Najla Alfya Utami</td>
-                                    <td>Perempuan</td>
-                                    <td>10 Animasi 3</td>
-                                    <td>najlaalfyautami@gmail.com</td>
+                                    <td>{{ ++$i }}</td>
+                                    <td>{{ $anggota->nama }}</td>
+                                    <td>{{ $anggota->jenis_kelamin }}</td>
+                                    <td>{{ $anggota->kelas }}</td>
+                                    <td>{{ $anggota->email }}</td>
                                     <td>
                                         <!-- Tambahkan tombol aksi di sini -->
                                         <button class="btn btn-primary">Edit</button>
                                         <button class="btn btn-danger">Delete</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Cynthia Pradipta</td>
-                                    <td>Perempuan</td>
-                                    <td>10 Animasi 3</td>
-                                    <td>cynthiapradipta@gmail.com</td>
-                                    <td>
-                                        <!-- Tambahkan tombol aksi di sini -->
-                                        <button class="btn btn-primary">Edit</button>
-                                        <button class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -199,7 +190,7 @@
     <script src="{{ asset('assets/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{ asset('assets/js/sb-admin-2.js')}}"></script>
     <script src="{{ asset('assets/js/sb-admin-2.min.js')}}"></script>
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.js')}}"></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.js')}}"></script>
 
 
     <!-- Core plugin JavaScript-->

@@ -18,7 +18,7 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -111,7 +111,7 @@
                                 <tr>
                                     <td>2</td>
                                     <td>Hahaha</td>
-                                    <td>Najla Alfya Utami</td>
+                                    <td>Cynthia Pradipta</td>
                                     <td>10-05-2024</td>
                                     <td>17-05-2024</td>
                                     <td>Pinjam</td>
