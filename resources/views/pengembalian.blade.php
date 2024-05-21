@@ -90,6 +90,7 @@
                                   <th>Tanggal Peminjaman</th>
                                   <th>Tanggal Pengembalian</th>
                                   <th>Tanggal Kembali</th>
+                                  <th>Status</th>
                                   <th>Pilihan</th>
                                 </tr>
                             </thead>
@@ -102,6 +103,7 @@
                                     <td>10-05-2024</td>
                                     <td>17-05-2024</td>
                                     <td>29-05-2024</td>
+                                    <td>Dikembalikan</td>
                                     <td>
                                         <!-- Tambahkan tombol aksi di sini -->
                                         <button class="btn btn-danger">Delete</button>
@@ -114,6 +116,7 @@
                                     <td>10-05-2024</td>
                                     <td>17-05-2024</td>
                                     <td>29-05-2024</td>
+                                    <td>Dikembalikan</td>
                                     <td>
                                         <!-- Tambahkan tombol aksi di sini -->
                                         <button class="btn btn-danger">Delete</button>

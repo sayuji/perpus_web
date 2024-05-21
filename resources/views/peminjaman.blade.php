@@ -89,7 +89,7 @@
                                   <th>Nama</th>
                                   <th>Tanggal Peminjaman</th>
                                   <th>Tanggal Pengembalian</th>
-                                  <th>Pinjam</th>
+                                  <th>Status</th>
                                   <th>Pilihan</th>
                                 </tr>
                             </thead>
