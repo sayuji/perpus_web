@@ -10,7 +10,7 @@ class DataBukuController extends Controller
 {
     public function buku()
     {
-        $data = Buku::all();
+        $data = Buku::with(['get_kategori'])->get();
         $data_kategori = Kategori::all();
         return view('data_buku', [
             'data' => $data,

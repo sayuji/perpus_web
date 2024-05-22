@@ -131,7 +131,7 @@
             <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $buku->judul }}</td>
-                <td>{{ $buku->kategori }}</td>
+                <td>{{ $buku->get_kategori->nama_kategori }}</td>
                 <td>{{ $buku->deskripsi }}</td>
                 <td>{{ $buku->jumlah }}</td>
                 <td>
