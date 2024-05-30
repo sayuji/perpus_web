@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>GedeBook - Dashboard</title>
+    <title>Starlib</title>
     <!-- Include CSS files -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -22,7 +22,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Gedebook</div>
+                <div class="sidebar-brand-text mx-3">Starlib</div>
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -63,6 +63,11 @@
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('logout') }}">
+                    <span>Logout</span>
+                </a>
+            </li>
         </ul>
         <!-- End of Sidebar -->
 
@@ -91,37 +96,21 @@
                                   <th>Tanggal Pengembalian</th>
                                   <th>Tanggal Kembali</th>
                                   <th>Status</th>
-                                  <th>Pilihan</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- Isi tabel di sini -->
+                                @foreach ($data_peminjaman as $i => $peminjaman)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Hahaha</td>
-                                    <td>Najla Alfya Utami</td>
-                                    <td>10-05-2024</td>
-                                    <td>17-05-2024</td>
-                                    <td>29-05-2024</td>
-                                    <td>Dikembalikan</td>
-                                    <td>
-                                        <!-- Tambahkan tombol aksi di sini -->
-                                        <button class="btn btn-danger">Delete</button>
-                                    </td>
+                                    <td>{{ ++$i }}</td>
+                                    <td>{{ $peminjaman->get_buku->judul }}</td>
+                                    <td>{{ $peminjaman->get_user->name }}</td>
+                                    <td>{{ $peminjaman->tanggal_peminjaman }}</td>
+                                    <td>{{ $peminjaman->tanggal_pengembalian }}</td>
+                                    <td>{{ $peminjaman->tanggal_pengembalian_sebenarnya }}</td>
+                                    <td>{{ $peminjaman->status }}</td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Hahaha</td>
-                                    <td>Cynthia Pradipta</td>
-                                    <td>10-05-2024</td>
-                                    <td>17-05-2024</td>
-                                    <td>29-05-2024</td>
-                                    <td>Dikembalikan</td>
-                                    <td>
-                                        <!-- Tambahkan tombol aksi di sini -->
-                                        <button class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -136,7 +125,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="text-center my-auto">
-                        <span>Powered by GedeBook</span>
+                        <span>Powered by Starlib</span>
                     </div>
                 </div>
             </footer>

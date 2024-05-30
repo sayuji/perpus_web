@@ -50,6 +50,8 @@ class DataBukuController extends Controller
         $request->validate([
             'judul' => 'required|string|max:255',
             'kategori' => 'required|string',
+            'penulis' => 'required|string',
+            'penerbit' => 'required|string',
             'deskripsi' => 'required|string',
             'jumlah' => 'required|integer',
         ]);
@@ -58,6 +60,8 @@ class DataBukuController extends Controller
         if ($buku) {
             $buku->judul = $request->judul;
             $buku->kategori = $request->kategori;
+            $buku->penulis = $request->penulis;
+            $buku->penerbit = $request->penerbit;
             $buku->deskripsi = $request->deskripsi;
             $buku->jumlah = $request->jumlah;
             $buku->save();

@@ -7,7 +7,7 @@
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal">
-    Buat Data Anggota
+    Buat Data Buku
 </button>
 
 
@@ -33,13 +33,21 @@
                         <label for="exampleInputEmail1">Kategori</label>
                         <select class="form-control" id="tambah_kategori" name="kategori" required>
                         @foreach ($data_kategori as $i => $kategori)
-                            <option value="{{ $kategori->nama_kategori }}">{{ $kategori->nama_kategori }}</option>
+                            <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
                         @endforeach
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputEmail1">Penulis</label>
+                        <input type="text" class="form-control" placeholder="Penulis" name="penulis">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Penerbit</label>
+                        <input type="text" class="form-control" placeholder="Penerbit" name="penerbit">
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInputEmail1">Deskripsi</label>
-                        <input type="text" class="form-control" placeholder="Deskripsi" name="deskripsi">
+                        <textarea class="form-control" placeholder="Deskripsi" name="deskripsi" rows="5"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Jumlah</label>
@@ -78,13 +86,21 @@
                         <label for="edit_kategori">Kategori</label>
                         <select class="form-control" id="edit_kategori" name="kategori" required>
                         @foreach ($data_kategori as $i => $kategori)
-                            <option value="{{ $kategori->nama_kategori }}">{{ $kategori->nama_kategori }}</option>
+                            <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
                         @endforeach
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputEmail1">Penulis</label>
+                        <input type="text" class="form-control" id="edit_penulis" placeholder="Penulis" name="penulis">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Penerbit</label>
+                        <input type="text" class="form-control" id="edit_penerbit" placeholder="Penerbit" name="penerbit">
+                    </div>
+                    <div class="form-group">
                         <label for="edit_deskripsi">Deskripsi</label>
-                        <input type="text" class="form-control" id="edit_deskripsi" name="deskripsi" required>
+                        <textarea class="form-control" id="edit_deskripsi" placeholder="Deskripsi" name="deskripsi" rows="5"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="edit_jumlah">Jumlah</label>
@@ -105,6 +121,8 @@
         $.get('/buku/' + id + '/edit', function (data) {
             $('#edit_judul').val(data.judul);
             $('#edit_kategori').val(data.kategori);
+            $('#edit_penulis').val(data.penulis);
+            $('#edit_penerbit').val(data.penerbit);
             $('#edit_deskripsi').val(data.deskripsi);
             $('#edit_jumlah').val(data.jumlah);
             $('#edit-form').attr('action', '/buku/' + id);
@@ -121,6 +139,8 @@
                 <th>No</th>
                 <th>Judul</th>
                 <th>Kategori</th>
+                <th>Penulis</th>
+                <th>Penerbit</th>
                 <th>Deskripsi</th>
                 <th>Jumlah</th>
                 <th>Pilihan</th>
@@ -132,7 +152,9 @@
                 <td>{{ ++$i }}</td>
                 <td>{{ $buku->judul }}</td>
                 <td>{{ $buku->get_kategori->nama_kategori }}</td>
-                <td>{{ $buku->deskripsi }}</td>
+                <td>{{ $buku->penulis }}</td>
+                <td>{{ $buku->penerbit }}</td>
+                <td width="300" title="{{$buku->deskripsi}}">{!! Str::limit($buku->deskripsi, 100, '...') !!}</td>
                 <td>{{ $buku->jumlah }}</td>
                 <td>
                     <button class="btn btn-primary" onclick="editBuku('{{ $buku->id }}')">Edit</button>

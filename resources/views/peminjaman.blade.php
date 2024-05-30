@@ -1,165 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.template')
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>GedeBook - Dashboard</title>
-    <!-- Include CSS files -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
-</head>
+@section('content')
 
-<body id="page-top">
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Gedebook</div>
-            </a>
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ route('dashboard') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            <!-- Nav Items -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('data_kategori') }}">
-                    <span>Data Kategori</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('data_buku') }}">
-                    <span>Data Buku</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('data_anggota') }}">
-                    <span>Data Anggota</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('peminjaman') }}">
-                    <span>Peminjaman</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('pengembalian') }}">
-                    <span>Pengembalian</span>
-                </a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-        </ul>
-        <!-- End of Sidebar -->
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">Peminjaman</h1>
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-            <!-- Main Content -->
-            <div id="content">
-                <br>
-                <br>
+    <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal">
+        Ajukan Peminjaman
+    </button>
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Peminjaman</h1>
-
-                    <!-- Tabel Data Buku -->
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                  <th>No</th>
-                                  <th>Buku</th>
-                                  <th>Nama</th>
-                                  <th>Tanggal Peminjaman</th>
-                                  <th>Tanggal Pengembalian</th>
-                                  <th>Status</th>
-                                  <th>Pilihan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Isi tabel di sini -->
-                                <tr>
-                                    <td>1</td>
-                                    <td>Hahaha</td>
-                                    <td>Najla Alfya Utami</td>
-                                    <td>10-05-2024</td>
-                                    <td>17-05-2024</td>
-                                    <td>Pinjam</td>
-                                    <td>
-                                        <!-- Tambahkan tombol aksi di sini -->
-                                        <button class="btn btn-primary">Edit</button>
-                                        <button class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Hahaha</td>
-                                    <td>Cynthia Pradipta</td>
-                                    <td>10-05-2024</td>
-                                    <td>17-05-2024</td>
-                                    <td>Pinjam</td>
-                                    <td>
-                                        <!-- Tambahkan tombol aksi di sini -->
-                                        <button class="btn btn-primary">Edit</button>
-                                        <button class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-                <!-- /.container-fluid -->
-
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ajukan Peminjaman</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="text-center my-auto">
-                        <span>Powered by GedeBook</span>
+            <div class="modal-body">
+                <form action="{{ route('ajukan_peminjaman') }}" method="POST" id="form-peminjaman">
+                    @csrf
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Buku</label>
+                        <select class="form-control" name="buku" required>
+                            @foreach ($data_buku as $i => $buku)
+                                <option value="{{ $buku->id }}">{{ $buku->judul }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tanggal Peminjaman</label>
+                        <input type="date" class="form-control" placeholder="Tanggal Peminjaman" name="tanggal_peminjaman">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tanggal Pengembalian</label>
+                        <input type="date" class="form-control" placeholder="Tanggal Pengembalian" name="tanggal_pengembalian">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-primary" onclick="$('#form-peminjaman').submit()">Simpan</button>
+            </div>
         </div>
-        <!-- End of Content Wrapper -->
-
     </div>
-    <!-- End of Page Wrapper -->
+    </div>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+    <!-- Tabel Data Buku -->
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Buku</th>
+                    <th>Nama</th>
+                    <th>Tanggal Peminjaman</th>
+                    <th>Tanggal Pengembalian</th>
+                    <th>Status</th>
+                    <th>Pilihan</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($data_peminjaman as $i => $peminjaman)
+                <tr>
+                    <td>{{ ++$i }}</td>
+                    <td>{{ $peminjaman->get_buku->judul }}</td>
+                    <td>{{ $peminjaman->get_user->name }}</td>
+                    <td>{{ $peminjaman->tanggal_peminjaman }}</td>
+                    <td>{{ $peminjaman->tanggal_pengembalian }}</td>
+                    <td>{{ $peminjaman->status }}</td>
+                    <td>
+                        @if ($peminjaman->status === 'Menunggu Approval' && Auth::user()->role === 'petugas')
+                            <a href="{{ route('approve_peminjaman', $peminjaman->id) }}" class="btn btn-success">Approve</a>
+                        @endif
+                        @if ($peminjaman->status === 'Dipinjam' && Auth::user()->role === 'petugas')
+                            <a href="{{ route('peminjaman_pengembalian', $peminjaman->id) }}" class="btn btn-warning">Pengembalian</a>
+                        @endif
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-</body>
-
-</html>
+@endsection

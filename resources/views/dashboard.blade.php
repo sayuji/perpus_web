@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>GedeBook - Dashboard</title>
+    <title>Starlib - Dashboard</title>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
@@ -16,7 +16,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Gedebook</div>
+                <div class="sidebar-brand-text mx-3">Starlib's</div>
             </a>
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">
@@ -54,6 +54,11 @@
                 </a>
             </li>
             <hr class="sidebar-divider d-none d-md-block">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('logout') }}">
+                    <span>Logout</span>
+                </a>
+            </li>
         </ul>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
@@ -61,26 +66,98 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Cari Buku..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Satrio Bayu Adji</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 medium">{{ Auth::user()->name }}</span>
                             </a>
                         </li>
                     </ul>
                 </nav>
                 <div class="container-fluid">
-                    <!-- Add your dashboard content here -->
+                    <h2>Dashboard</h2>
+                    <br>
+                    <div class="row">
+                        <!-- Card 1 -->
+                        <style>
+                            .card:hover {
+                                transform: translateY(-5px);
+                                transition: transform 0.3s;
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                            }
+                        </style>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="h1 mb-0 font-weight-bold text-gray-800">0</div>
+                                            <div class="text-xl font-weight-bold text-primary text-uppercase mb-1">Anggota</div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <a href="{{ route('data_anggota') }}" class="text-xm text-gray-800">Lihat Selengkapnya</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="h1 mb-0 font-weight-bold text-gray-800">0</div>
+                                            <div class="text-xl font-weight-bold text-success text-uppercase mb-1">Buku</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-3x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <a href="{{ route('data_buku') }}" class="text-xm text-gray-800">Lihat Selengkapnya</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="h1 mb-0 font-weight-bold text-gray-800">0</div>
+                                            <div class="text-xl font-weight-bold text-warning text-uppercase mb-1">Pinjam</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-3x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <a href="{{ route('peminjaman') }}" class="text-xm text-gray-800">Lihat Selengkapnya</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-danger shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="h1 mb-0 font-weight-bold text-gray-800">0</div>
+                                            <div class="text-xl font-weight-bold text-danger text-uppercase mb-1">Dikembalikan</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-3x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <a href="{{ route('pengembalian') }}" class="text-xm text-gray-800">Lihat Selengkapnya</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
