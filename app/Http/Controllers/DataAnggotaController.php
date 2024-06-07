@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Anggota;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DataAnggotaController extends Controller
 {
     public function data()
     {
-        $data = Anggota::all();
+        $data = User::all();
         return view('data_anggota', [
             'data' => $data
         ]);
@@ -18,14 +18,14 @@ class DataAnggotaController extends Controller
     public function tambah_anggota(Request $request)
     {
         $payload = $request->all();
-        $model = Anggota::create($payload);
+        $model = User::create($payload);
 
         return redirect()->back();
     }
 
     public function destroy($id)
     {
-        $anggota = Anggota::find($id);
+        $anggota = User::find($id);
         if ($anggota) {
             $anggota->delete();
             return redirect()->back()->with('success', 'Anggota berhasil dihapus');
@@ -35,7 +35,7 @@ class DataAnggotaController extends Controller
 
     public function edit($id)
     {
-        $anggota = Anggota::find($id);
+        $anggota = User::find($id);
         if ($anggota) {
             return response()->json($anggota);
         }
@@ -45,18 +45,20 @@ class DataAnggotaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'jenis_kelamin' => 'required|string',
             'kelas' => 'required|string|max:255',
             'email' => 'required|email|max:255',
+            'role' => 'string',
         ]);
 
-        $anggota = Anggota::find($id);
+        $anggota = User::find($id);
         if ($anggota) {
-            $anggota->nama = $request->nama;
+            $anggota->name = $request->name;
             $anggota->jenis_kelamin = $request->jenis_kelamin;
             $anggota->kelas = $request->kelas;
             $anggota->email = $request->email;
+            if ($request->role) $anggota->role = $request->role;
             $anggota->save();
             return redirect()->back()->with('success', 'Anggota berhasil diperbarui');
         }

@@ -5,7 +5,6 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Peminjaman</h1>
 
-    @if(Auth::user()->role !== 'petugas')
     <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal">
         Ajukan Peminjaman
     </button>
@@ -49,7 +48,6 @@
         </div>
     </div>
     </div>
-    @endif
 
     <!-- Tabel Data Buku -->
     <div class="table-responsive">
@@ -75,10 +73,10 @@
                     <td>{{ $peminjaman->tanggal_pengembalian }}</td>
                     <td>{{ $peminjaman->status }}</td>
                     <td>
-                        @if ($peminjaman->status === 'Menunggu Approval' && Auth::user()->role === 'petugas')
+                        @if ($peminjaman->status === 'Menunggu Approval' && Auth::user()->role === 'anggota')
                             <a href="{{ route('approve_peminjaman', $peminjaman->id) }}" class="btn btn-success">Approve</a>
                         @endif
-                        @if ($peminjaman->status === 'Dipinjam' && Auth::user()->role === 'anggota')
+                        @if ($peminjaman->status === 'Dipinjam' && Auth::user()->role === 'petugas')
                             <a href="{{ route('peminjaman_pengembalian', $peminjaman->id) }}" class="btn btn-warning">Pengembalian</a>
                         @endif
                     </td>
@@ -89,4 +87,3 @@
     </div>
 
 @endsection
-

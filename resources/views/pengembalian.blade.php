@@ -1,155 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.template')
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Starlib</title>
-    <!-- Include CSS files -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
-</head>
+@section('content')
+<!-- Page Heading -->
+<h1 class="h3 mb-4 text-gray-800">Pengembalian</h1>
 
-<body id="page-top">
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Starlib</div>
-            </a>
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ route('dashboard') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            <!-- Nav Items -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('data_kategori') }}">
-                    <span>Data Kategori</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('data_buku') }}">
-                    <span>Data Buku</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('data_anggota') }}">
-                    <span>Data Anggota</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('peminjaman') }}">
-                    <span>Peminjaman</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('pengembalian') }}">
-                    <span>Pengembalian</span>
-                </a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('logout') }}">
-                    <span>Logout</span>
-                </a>
-            </li>
-        </ul>
-        <!-- End of Sidebar -->
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-            <!-- Main Content -->
-            <div id="content">
-                <br>
-                <br>
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Pengembalian</h1>
-
-                    <!-- Tabel Data Buku -->
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                  <th>No</th>
-                                  <th>Buku</th>
-                                  <th>Nama</th>
-                                  <th>Tanggal Peminjaman</th>
-                                  <th>Tanggal Pengembalian</th>
-                                  <th>Tanggal Kembali</th>
-                                  <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Isi tabel di sini -->
-                                @foreach ($data_peminjaman as $i => $peminjaman)
-                                <tr>
-                                    <td>{{ ++$i }}</td>
-                                    <td>{{ $peminjaman->get_buku->judul }}</td>
-                                    <td>{{ $peminjaman->get_user->name }}</td>
-                                    <td>{{ $peminjaman->tanggal_peminjaman }}</td>
-                                    <td>{{ $peminjaman->tanggal_pengembalian }}</td>
-                                    <td>{{ $peminjaman->tanggal_pengembalian_sebenarnya }}</td>
-                                    <td>{{ $peminjaman->status }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-                <!-- /.container-fluid -->
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Berikan Ulasan & Rating</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="text-center my-auto">
-                        <span>Powered by Starlib</span>
+            <div class="modal-body">
+                <form action="" method="POST" id="form-peminjaman">
+                    @csrf
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Ulasan</label>
+                        <input type="text" class="form-control" placeholder="Ulasan" name="ulasan">
                     </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Rating</label>
+                        <input id="input-id-modal" name="rating" class="rating rating-loading" data-display-only="false" data-size="md">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-primary" onclick="$('#form-peminjaman').submit()">Tambahkan Ulasan</button>
+            </div>
         </div>
-        <!-- End of Content Wrapper -->
-
     </div>
-    <!-- End of Page Wrapper -->
+</div>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-</body>
-
-</html>
+<!-- Tabel Data Buku -->
+<div class="table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+              <th>No</th>
+              <th>Buku</th>
+              <th>Nama</th>
+              <th>Tanggal Peminjaman</th>
+              <th>Tanggal Pengembalian</th>
+              <th>Tanggal Kembali</th>
+              <th>Status</th>
+            @if(Auth::user()->role !== 'petugas')
+              <th>Pilihan</th>
+            @endif
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Isi tabel di sini -->
+            @foreach ($data_peminjaman as $i => $peminjaman)
+            <tr>
+                <td>{{ ++$i }}</td>
+                <td>{{ $peminjaman->get_buku->judul }}</td>
+                <td>{{ $peminjaman->get_user->name }}</td>
+                <td>{{ $peminjaman->tanggal_peminjaman }}</td>
+                <td>{{ $peminjaman->tanggal_pengembalian }}</td>
+                <td>{{ $peminjaman->tanggal_pengembalian_sebenarnya }}</td>
+                <td>{{ $peminjaman->status }}</td>
+                @if(Auth::user()->role !== 'petugas')
+                <td>
+                    <a href="" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Berikan Ulasan</a>
+                </td>
+                @endif
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@endsection

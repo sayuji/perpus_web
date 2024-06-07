@@ -14,11 +14,27 @@ class PeminjamanController extends Controller
         $data = Buku::with(['get_kategori'])->get();
         $data_peminjaman = Peminjaman::whereNot('status', 'Dikembalikan');
 
-        if(Auth::user()->role === 'anggota') {
+        if (Auth::user()->role === 'anggota') {
             $data_peminjaman->where('user', Auth::user()->id);
         }
 
+        $data_peminjaman->with(['get_user']);
+
         return view('peminjaman', [
+            'data_buku' => $data,
+            'data_peminjaman' => $data_peminjaman->get()
+        ]);
+    }
+
+    public function peminjaman_siswa()
+    {
+        $data = Buku::with(['get_kategori'])->get();
+        $data_peminjaman = Peminjaman::whereNot('status', 'Dikembalikan');
+
+        if (Auth::user()->role === 'anggota') {
+            $data_peminjaman->where('user', Auth::user()->id);
+        }
+        return view('peminjaman_siswa', [
             'data_buku' => $data,
             'data_peminjaman' => $data_peminjaman->get()
         ]);
@@ -44,7 +60,7 @@ class PeminjamanController extends Controller
             ]);
             $buku = $peminjaman->get_buku;
             $buku->update([
-                'jumlah' => $buku->jumlah -1
+                'jumlah' => $buku->jumlah - 1
             ]);
             return redirect()->back()->with('success', 'Peminjamaan di Approve');
         }
@@ -61,7 +77,7 @@ class PeminjamanController extends Controller
             ]);
             $buku = $peminjaman->get_buku;
             $buku->update([
-                'jumlah' => $buku->jumlah +1
+                'jumlah' => $buku->jumlah + 1
             ]);
             return redirect()->back()->with('success', 'Peminjamaan telah dikembalikan');
         }

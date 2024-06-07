@@ -69,4 +69,12 @@ class DataBukuController extends Controller
         }
         return redirect()->back()->with('error', 'Buku tidak ditemukan');
     }
+
+    public function detail(Buku $buku)
+    {
+        // $buku->with(['get_kategori']);
+        return view('detail', [
+            'buku' => $buku
+        ]);
+    }
 }

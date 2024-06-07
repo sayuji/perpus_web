@@ -26,23 +26,45 @@
                     @csrf
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nama</label>
-                        <input type="text" class="form-control" placeholder="Nama" name="nama">
+                        <input type="text" class="form-control" placeholder="Nama" name="name">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label class="label" for="name">Kelas</label>
+                                <input type="text" class="form-control" placeholder="Kelas" required="" value="{{ old('kelas') }}" name="kelas">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="label">Jenis Kelamin</label>
+                                <select class="form-control" id="exampleFormControlSelect1" name="jenis_kelamin">
+                                    <option {{ !old('jenis_kelamin') ? 'selected' : '' }} disabled>-- Pilih Jenis Kelamin --</option>
+                                    <option value="laki-laki" {{ old('jenis_kelamin') === 'laki-laki' ? 'selected' : '' }}>Laki-Laki</option>
+                                    <option value="perempuan" {{ old('jenis_kelamin') === 'perempuan' ? 'selected' : '' }}>Perempuan</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Jenis Kelamin</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="jenis_kelamin">
-                            <option selected disabled>--- Pilih Jenis Kelamin ---</option>
-                            <option value="laki-laki">Laki-Laki</option>
-                            <option value="perempuan">Perempuan</option>
+                        <label for="exampleInputEmail1">Role</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="role">
+                            <option {{ !old('role') ? 'selected' : '' }} disabled>-- Pilih Role --</option>
+                            <option value="petugas" {{ old('petugas') === 'petugas' ? 'selected' : '' }}>Petugas</option>
+                            <option value="anggota" {{ old('anggota') === 'anggota' ? 'selected' : '' }}>Anggota</option>
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Kelas</label>
-                        <input type="text" class="form-control" placeholder="Kelas" name="kelas">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label>
                         <input type="email" class="form-control" placeholder="Email" name="email">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="label" for="password">Password</label>
+                        <input type="password" class="form-control" placeholder="Password" required="" value="{{ old('password') }}" name="password">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="label" for="password">Confirm Password</label>
+                        <input type="password" class="form-control" placeholder="Confirm Password" required="" value="{{ old('password_confirmation') }}" name="password_confirmation">
                     </div>
                 </form>
             </div>
@@ -71,7 +93,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="edit_nama">Nama</label>
-                        <input type="text" class="form-control" id="edit_nama" name="nama" required>
+                        <input type="text" class="form-control" id="edit_nama" name="name" required>
                     </div>
                     <div class="form-group">
                         <label for="edit_jenis_kelamin">Jenis Kelamin</label>
@@ -88,6 +110,13 @@
                         <label for="edit_email">Email</label>
                         <input type="email" class="form-control" id="edit_email" name="email" required>
                     </div>
+                    <div class="form-group">
+                        <label for="edit_role">Role</label>
+                        <select class="form-control" id="edit_role" name="role" required>
+                            <option value="petugas">Petugas</option>
+                            <option value="anggota">Anggota</option>
+                        </select>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -101,10 +130,11 @@
 <script>
     function editAnggota(id) {
         $.get('/anggota/' + id + '/edit', function (data) {
-            $('#edit_nama').val(data.nama);
+            $('#edit_nama').val(data.name);
             $('#edit_jenis_kelamin').val(data.jenis_kelamin);
             $('#edit_kelas').val(data.kelas);
             $('#edit_email').val(data.email);
+            $('#edit_role').val(data.role);
             $('#edit-form').attr('action', '/anggota/' + id);
             $('#editModal').modal('show');
         });
@@ -122,6 +152,7 @@
                 <th>Jenis Kelamin</th>
                 <th>Kelas</th>
                 <th>Email</th>
+                <th>Role</th>
                 <th>Pilihan</th>
             </tr>
         </thead>
@@ -129,10 +160,11 @@
             @foreach ($data as $i => $anggota)
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $anggota->nama }}</td>
+                <td>{{ $anggota->name }}</td>
                 <td>{{ $anggota->jenis_kelamin }}</td>
                 <td>{{ $anggota->kelas }}</td>
                 <td>{{ $anggota->email }}</td>
+                <td>{{ $anggota->role }}</td>
                 <td>
                     <button class="btn btn-primary" onclick="editAnggota('{{ $anggota->id }}')">Edit</button>
                     <form action="{{ route('hapus_anggota', $anggota->id) }}" method="POST" style="display:inline;">
