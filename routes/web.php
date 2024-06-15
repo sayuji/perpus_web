@@ -87,5 +87,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/submit-review', [PengembalianController::class, 'submitReview'])->name('submit.review');
 
     Route::get('/approve_peminjaman/{id}', [PeminjamanController::class, 'approve_peminjaman'])->name('approve_peminjaman');
+    Route::get('/reject_peminjaman/{id}', [PeminjamanController::class, 'reject_peminjaman'])->name('reject_peminjaman');
     Route::get('/pengembalian/{id}', [PeminjamanController::class, 'pengembalian'])->name('peminjaman_pengembalian');
 });

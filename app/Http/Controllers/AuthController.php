@@ -17,12 +17,12 @@ class AuthController extends Controller
         $this->validate($request, [
             'name' => 'required|min:3|max:50',
             'email' => 'email',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|confirmed|min:8',
         ]);
 
-        $model = User::create($payload);
+        User::create($payload);
 
-        return redirect()->route('login');
+        return redirect()->route('register')->with('success', 'Register Berhasil! Kamu Bisa Login Sekarang.');
     }
 
     public function login(Request $request)

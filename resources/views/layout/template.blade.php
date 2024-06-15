@@ -1,5 +1,3 @@
-<!-- resources/views/layouts/app.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,16 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Starlib</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.0.7/css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
-
     <link rel="stylesheet" href="{{ asset('assets/vendor/rating') }}/themes/krajee-fa/theme.css" media="all" type="text/css"/>
-    <script src="{{ asset('assets/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.0.7/js/star-rating.js" type="text/javascript"></script>
-    <script src="{{ asset('assets/vendor/rating') }}/themes/krajee-fa/theme.js" type="text/javascript"></script>
+    <style>
+        .custom-alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #16d840;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            z-index: 1000;
+        }
+        .alert-error {
+            background-color: red;
+        }
+    </style>
     <style>
         .rating-container {
             margin-bottom: -20px !important;
@@ -106,26 +117,28 @@
                         </li>
                     </ul>
                 </nav>
-
                 <div class="container-fluid">
                     @yield('content')
+                    <div class="custom-alert" id="success-alert"></div>
                 </div>
             </div>
             <footer class="sticky-footer bg-white">
-                    <div class="text-center my-auto">
-                        <span>Powered by Starlib</span>
-                    </div>
+                <div class="text-center my-auto">
+                    <span>Powered by Starlib</span>
+                </div>
             </footer>
         </div>
     </div>
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('assets/js/sb-admin-2.js')}}"></script>
     <script src="{{ asset('assets/js/sb-admin-2.min.js')}}"></script>
-    <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.0.7/js/star-rating.js" type="text/javascript"></script>
     <script>
         $('.rating').rating({
             theme: 'krajee-fa',
@@ -144,6 +157,24 @@
                 4.5: '4.5 Stars',
                 5: '5 Stars',
             },
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @if (session('error') || session('success'))
+                const alertBox = $('#success-alert');
+                alertBox.css('display', 'block');
+
+                @if (session('error'))
+                    alertBox.addClass('alert-error')
+                @endif
+
+                alertBox.html("{{ session('success') }}{{ session('error') }}")
+
+                setTimeout(function() {
+                    alertBox.css('display', 'none');
+                }, 3000);
+            @endif
         });
     </script>
 </body>

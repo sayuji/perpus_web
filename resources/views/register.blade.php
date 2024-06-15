@@ -9,6 +9,20 @@
     <link href="css.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/login/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/login/style.css') }}">
+    <style>
+        .custom-alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #16d840;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            z-index: 1000;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,7 +38,7 @@
                 </div>
             @endif
         </div>
-        <div class="login-wrap p-4 p-md-5" style="padding-top: 20px !important; padding-bottom: 0 !important ">
+        <div class="login-wrap p-4 p-md-5" style="padding-top: 20px !important; padding-bottom: 0 !important">
             <div class="d-flex">
                 <div class="w-100">
                     <h3 class="mb-4">Sign Up</h3>
@@ -60,26 +74,39 @@
                 </div>
                 <div class="form-group mb-3">
                     <label class="label" for="password">Password</label>
-                    <input type="password" class="form-control" placeholder="Password" required="" value="{{ old('password') }}" name="password">
+                    <input type="password" class="form-control" placeholder="Password" required="" name="password">
                 </div>
                 <div class="form-group mb-3">
                     <label class="label" for="password">Confirm Password</label>
-                    <input type="password" class="form-control" placeholder="Confirm Password" required="" value="{{ old('password_confirmation') }}" name="password_confirmation">
+                    <input type="password" class="form-control" placeholder="Confirm Password" required="" name="password_confirmation">
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" style="background-color: #4e73df !important">Sign
-                        Up</button>
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" style="background-color: #4e73df !important">Sign Up</button>
                 </div>
             </form>
             <p class="text-center">already have an account? <a href="{{ route('login') }}" style="color: #4e73df">Sign In</a></p>
         </div>
     </div>
+
+    <div class="custom-alert" id="success-alert">
+        Register Berhasil! Kamu Bisa Login Sekarang.
+    </div>
+
     <script src="{{ asset('assets/login/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/login/popper.js') }}"></script>
     <script src="{{ asset('assets/login/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/login/main.js') }}"></script>
-
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @if (session('success'))
+                const alertBox = document.getElementById('success-alert');
+                alertBox.style.display = 'block';
+                setTimeout(function() {
+                    alertBox.style.display = 'none';
+                }, 3000);
+            @endif
+        });
+    </script>
 </body>
 
 </html>

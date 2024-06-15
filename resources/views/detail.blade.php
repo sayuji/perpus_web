@@ -74,11 +74,11 @@ aria-hidden="true">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary" onclick="$('#form-peminjaman').submit()">Simpan</button>
+                <button type="button" class="btn btn-primary" onclick="$('#form-peminjaman').submit()">Pinjam Buku</button>
             </div>
         </div>
     </div>
-    </div>
+</div>
 
 <div class="row pt-4 pl-4 pr-4">
     <div class="col-lg-4 large-img-container">
@@ -110,7 +110,11 @@ aria-hidden="true">
             <p class="h6"><strong>Stok Buku:</strong> <span class="card">{{ $buku->jumlah }}</span></p>
         </div>
         <div class="text-item">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Pinjam Buku</button>
+            <form action="{{ route('ajukan_peminjaman') }}" method="post">
+                @csrf
+                <input type="hidden" name="buku" value="{{ $buku->id }}">
+                <button class="btn btn-primary" type="submit">Pinjam Buku</button>
+            </form>
         </div>
     </div>
     <div class="col-lg-12">
@@ -124,6 +128,5 @@ aria-hidden="true">
         </div>
     </div>
 </div>
-
 
 @endsection

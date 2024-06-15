@@ -77,8 +77,9 @@
                     <td>
                         @if ($peminjaman->status === 'Menunggu Approval' && Auth::user()->role === 'petugas')
                             <a href="{{ route('approve_peminjaman', $peminjaman->id) }}" class="btn btn-success">Approve</a>
+                            <a href="{{ route('reject_peminjaman', $peminjaman->id) }}" class="btn btn-danger">Reject</a>
                         @endif
-                        @if ($peminjaman->status === 'Dipinjam' && Auth::user()->role === 'anggota')
+                        @if ($peminjaman->status === 'Dipinjam' && Auth::user()->role === 'petugas')
                             <a href="{{ route('peminjaman_pengembalian', $peminjaman->id) }}" class="btn btn-warning">Pengembalian</a>
                         @endif
                     </td>
