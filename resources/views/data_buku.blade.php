@@ -23,14 +23,18 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('tambah_buku') }}" method="POST" id="form-buku">
+                <form action="{{ route('tambah_buku') }}" method="POST" id="form-buku" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Judul</label>
-                        <input type="text" class="form-control" placeholder="Judul" name="judul">
+                        <label for="judul">Judul</label>
+                        <input type="text" class="form-control" placeholder="Judul" name="judul" required>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Kategori</label>
+                        <label for="gambar">Gambar</label>
+                        <input type="file" class="form-control" name="gambar" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="kategori">Kategori</label>
                         <select class="form-control" id="tambah_kategori" name="kategori" required>
                         @foreach ($data_kategori as $i => $kategori)
                             <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
@@ -38,20 +42,20 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Penulis</label>
-                        <input type="text" class="form-control" placeholder="Penulis" name="penulis">
+                        <label for="penulis">Penulis</label>
+                        <input type="text" class="form-control" placeholder="Penulis" name="penulis" required>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Penerbit</label>
-                        <input type="text" class="form-control" placeholder="Penerbit" name="penerbit">
+                        <label for="penerbit">Penerbit</label>
+                        <input type="text" class="form-control" placeholder="Penerbit" name="penerbit" required>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Deskripsi</label>
-                        <textarea class="form-control" placeholder="Deskripsi" name="deskripsi" rows="5"></textarea>
+                        <label for="deskripsi">Deskripsi</label>
+                        <textarea class="form-control" placeholder="Deskripsi" name="deskripsi" rows="5" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Jumlah</label>
-                        <input type="text" class="form-control" placeholder="Jumlah" name="jumlah">
+                        <label for="jumlah">Jumlah</label>
+                        <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" required>
                     </div>
                 </form>
             </div>
@@ -62,6 +66,8 @@
         </div>
     </div>
 </div>
+
+
 
 <!-- Modal Edit -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
@@ -75,12 +81,16 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="edit-form" method="POST">
+                <form id="edit-form" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <label for="edit_judul">Judul</label>
                         <input type="text" class="form-control" id="edit_judul" name="judul" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gambar">Gambar</label>
+                        <input type="file" class="form-control" name="gambar" accept="image/*" required>
                     </div>
                     <div class="form-group">
                         <label for="edit_kategori">Kategori</label>

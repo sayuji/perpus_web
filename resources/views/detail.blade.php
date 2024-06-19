@@ -82,7 +82,7 @@ aria-hidden="true">
 
 <div class="row pt-4 pl-4 pr-4">
     <div class="col-lg-4 large-img-container">
-        <img src="{{ asset('assets/images/'. $buku->judul.'.jpeg') }}" alt="Book Image">
+        <img src="{{ asset('images/'.$buku->gambar) }}" alt="Book Image">
     </div>
     <div class="col-lg-8 pl-5">
         <div class=" row-item">

@@ -14,13 +14,31 @@ class AuthController extends Controller
         $payload = $request->all();
         $payload['role'] = 'anggota';
 
-        $this->validate($request, [
-            'name' => 'required|min:3|max:50',
-            'email' => 'email',
-            'password' => 'required|confirmed|min:8',
-        ]);
+        try {
+            $this->validate($request, [
+                'name' => 'required|min:3|max:50',
+                'email' => 'email',
+                'password' => 'required|confirmed|min:8',
+            ]);
+            //code...
+        } catch (\Throwable $th) {
+            throw $th;
+        }
 
-        User::create($payload);
+        $user = User::create($payload);
+
+
+        if ($request->is('api/*')) {
+            $user = User::where('email', $request['email'])->firstOrFail();
+
+            $token = $user->createToken('auth_token')->plainTextToken;
+
+            return response()->json([
+                'access_token' => $token,
+                'token_type' => 'Bearer',
+            ]);
+        }
+
 
         return redirect()->route('register')->with('success', 'Register Berhasil! Kamu Bisa Login Sekarang.');
     }
@@ -33,6 +51,16 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($payload)) {
+            if ($request->is('api/*')) {
+                $user = User::where('email', $request['email'])->firstOrFail();
+
+                $token = $user->createToken('auth_token')->plainTextToken;
+
+                return response()->json([
+                    'access_token' => $token,
+                    'token_type' => 'Bearer',
+                ]);
+            }
             $request->session()->regenerate();
             return redirect()->route('dashboard');
         }
