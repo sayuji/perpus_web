@@ -94,7 +94,7 @@ aria-hidden="true">
             @endif
         </div>
         <div class="text-item">
-        <input id="input-id" name="rating" class="rating rating-loading" data-display-only="true" type="text" value="4" data-size="xs">
+        <input id="input-id" name="rating" class="rating rating-loading" data-display-only="true" type="text" value="{{ $buku->countRating() }}" data-size="xs">
         </div>
         <div class="text-item">
             <p class="h6"><strong>Penulis:</strong> {{ $buku->penulis }}</p>
@@ -120,11 +120,13 @@ aria-hidden="true">
     <div class="col-lg-12">
         <div class="text-item">
             <h3 class="card-title" style="margin-bottom: 0 "><strong>Ulasan & Rating</strong></h3>
+        @foreach ( $buku->ulasanRatings as $rating )
             <div class="card mt-4 p-3 w-100">
-                <p class="card-text"><strong>Nama:</strong> Satrio Bayu Adji</p>
-                <input id="input-id" name="rating" class="rating rating-loading" data-display-only="true" type="text" value="4" data-size="xs">
-                <p class="card-text mt-2"><strong>Ulasan:</strong> Keren Bang Bukunya</p>
+                <p class="card-text"><strong>Nama: </strong>{{ $rating->user->name }}</p>
+                    <input id="input-id" name="rating" class="rating rating-loading" data-display-only="true" type="text" value="{{ $rating->rating }}" data-size="xs">
+                <p class="card-text mt-2"><strong>Ulasan:</strong> {{ $rating->ulasan }}</p>
             </div>
+        @endforeach
         </div>
     </div>
 </div>

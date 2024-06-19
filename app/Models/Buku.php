@@ -34,4 +34,18 @@ class Buku extends Model
 
         return false;
     }
+
+    public function ulasanRatings()
+    {
+        return $this->hasMany(UlasanRating::class);
+    }
+
+    public function hasRating() {
+        return $this->ulasanRatings->count() > 0;
+    }
+
+    public function countRating()
+    {
+        return $this->ulasanRatings->pluck('rating')->avg();
+    }
 }

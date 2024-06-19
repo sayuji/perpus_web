@@ -15,25 +15,27 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST" id="form-peminjaman">
+                <form id="form-peminjaman">
                     @csrf
+                    <input type="hidden" name="buku_id" value="" id="buku-id">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Ulasan</label>
-                        <input type="text" class="form-control" placeholder="Ulasan" name="ulasan">
+                        <input type="text" class="form-control" placeholder="Ulasan" name="ulasan" required>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Rating</label>
-                        <input id="input-id-modal" name="rating" class="rating rating-loading" data-display-only="false" data-size="md">
+                        <input id="input-id-modal" name="rating" class="rating rating-loading" data-display-only="false" data-size="md" required>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary" onclick="$('#form-peminjaman').submit()">Tambahkan Ulasan</button>
+                <button type="button" class="btn btn-primary" onclick="submitReview()">Tambahkan Ulasan</button>
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- Tabel Data Buku -->
 <div class="table-responsive">
@@ -63,16 +65,57 @@
                 <td>{{ $peminjaman->tanggal_pengembalian }}</td>
                 <td>{{ $peminjaman->tanggal_pengembalian_sebenarnya }}</td>
                 <td>{{ $peminjaman->status }}</td>
-                @if(Auth::user()->role !== 'petugas')
                 <td>
-                    <a href="" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Berikan Ulasan</a>
+                    @if(Auth::user()->role === 'anggota' && !$peminjaman->isAlreadyRated())
+                        <button class="btn btn-success" onclick="openReviewModal({{ $peminjaman->buku }})">Berikan Ulasan</button>
+                    @endif
                 </td>
-                @endif
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+
+<script>
+    function openReviewModal(bukuId) {
+    $('#buku-id').val(bukuId);
+    $('#exampleModal').modal('show');
+}
+
+function submitReview() {
+    var formData = new FormData(document.getElementById('form-peminjaman'));
+
+    $.ajax({
+        url: '{{ route('submit.review') }}',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            if(response.success) {
+                // Refresh rating input
+                $('#input-id').rating();
+
+                const alertBox = $('#success-alert');
+                alertBox.css('display', 'block');
+                alertBox.html("Rating & Ulasan Berhasil Berikan")
+
+                setTimeout(function() {
+                    alertBox.css('display', 'none');
+                }, 3000);
+
+                location.reload(); 
+                // Tutup modal
+                $('#exampleModal').modal('hide');
+            }
+        },
+        error: function(response) {
+            alert('Terjadi kesalahan. Silakan coba lagi.');
+        }
+    });
+}
+
+</script>
 
 <script>
     function printTable() {

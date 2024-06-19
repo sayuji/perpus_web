@@ -5,52 +5,6 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Peminjaman</h1>
 
-    @if(Auth::user()->role !== 'petugas')
-    <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal">
-        Ajukan Peminjaman
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ajukan Peminjaman</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('ajukan_peminjaman') }}" method="POST" id="form-peminjaman">
-                    @csrf
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Buku</label>
-                        <select class="form-control" name="buku" required>
-                            @foreach ($data_buku as $i => $buku)
-                                <option value="{{ $buku->id }}">{{ $buku->judul }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Tanggal Peminjaman</label>
-                        <input type="date" class="form-control" placeholder="Tanggal Peminjaman" name="tanggal_peminjaman">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Tanggal Pengembalian</label>
-                        <input type="date" class="form-control" placeholder="Tanggal Pengembalian" name="tanggal_pengembalian">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary" onclick="$('#form-peminjaman').submit()">Simpan</button>
-            </div>
-        </div>
-    </div>
-    </div>
-    @endif
-
     <!-- Button to Print the Table -->
     <button type="button" class="btn btn-primary mb-4" onclick="printTable()">Print</button>
 

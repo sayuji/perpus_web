@@ -13,7 +13,7 @@ class Peminjaman extends Model
     protected $table = 'peminjaman';
     public $timestamps = false;
 
-      /**
+    /**
      * Get the get_kategori associated with the Buku
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -26,5 +26,13 @@ class Peminjaman extends Model
     public function get_user(): HasOne
     {
         return $this->hasOne(User::class, 'id', 'user');
+    }
+
+    public function isAlreadyRated()
+    {
+        return UlasanRating::query()
+            ->where('user_id', $this->user)
+            ->where('buku_id', $this->buku)
+            ->count() > 0;
     }
 }

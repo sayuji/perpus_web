@@ -109,7 +109,7 @@
                 <a href="{{ route('detail', ['buku' => $buku->id ]) }}" style="text-decoration: none; color: inherit;">
                     <img src="{{ asset('images/'.$buku->gambar) }}" class="card-img-top" alt="Image 1">
                     <div class="card-body">
-                        <input id="input-id" name="rating" class="rating rating-loading" data-display-only="true" type="text" value="4" data-size="xs">
+                        <input id="input-id" name="rating" class="rating rating-loading" data-display-only="true" type="text" value="{{ $buku->countRating() }}" data-size="xs">
                         <h5 class="card-title" style="margin-bottom: .15rem;">{{ $buku->judul }}</h5>
                         <p class="card-text">Penulis: {{ $buku->penulis }}</p>
                         <p class="card-text text-right"><span class="badge badge-secondary">Stok Buku: {{ $buku->jumlah }}</span></p>
